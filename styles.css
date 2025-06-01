@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #ffe9d6, #fff5ec);
+  font-family: 'Indie Flower', cursive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.envelope-container {
+  position: relative;
+  width: 320px;
+  height: 200px;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.envelope {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  transition: transform 1s ease-in-out;
+}
+
+.flap {
+  width: 100%;
+  height: 50%;
+  background-color: #e0a96d;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top;
+  transition: transform 1s ease-in-out;
+}
+
+.body {
+  width: 100%;
+  height: 100%;
+  background-color: #f4d9a3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.letter {
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  width: 90%;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 1s ease-in-out;
+  z-index: 1;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.open .flap {
+  transform: rotateX(-180deg);
+}
+
+.open .letter {
+  transform: translateY(-200%);
+  opacity: 1;
+}
+
+.open-sign {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  color: #8b5e3c;
+  background: #fff5d1;
+  padding: 6px 12px;
+  border: 2px dashed #c19867;
+  border-radius: 10px;
+  z-index: 3;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -5px); }
+}
